@@ -9,3 +9,6 @@ Fetch information from Instagram, set them in the various data-attributes.
 
 ## Copyright and license
 No license.
+
+![alt tag](https://github.com/olssonandreas/imagecarousel/blob/master/gallery.jpg)
+
