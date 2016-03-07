@@ -9,14 +9,6 @@ jQuery(function($) {
         curIndex === updateArrows.nbrOfItems && $('.instagram-right').addClass('disabled');
         curIndex === 0 && $('.instagram-left').addClass('disabled');
     }
-
-    $('body').on('click', '.instagram-modal .iconscircle-cross', function(e){
-        removeModal();
-
-
-
-    });
-
     $('.instagram-carousel').on('click', function(e){
         scrollTo = $('body').scrollTop();
        $('body').addClass('noscroll');
@@ -81,26 +73,30 @@ jQuery(function($) {
             }
         }
     };
-    removeModal = function(){
-        $('body').find('.instagram-wrapper').remove();
-        $('body').removeClass('noscroll');
-        $('body').css('position', 'static');
-        $('body').animate({scrollTop: scrollTo}, 0);
-    };
 
     $('body').on( 'click','.instagram-wrapper', function(e) {
         if($(e.target).hasClass('.instagram-wrapper')){
             removeModal();
         }
     });
+    $('body').on('click', '.instagram-modal .iconscircle-cross', function(e){
+        removeModal();
+    });
 
-    function instagramScrollMaxHeight() {
+     var removeModal = function(){
+        $('body').find('.instagram-wrapper').remove();
+        $('body').removeClass('noscroll');
+        $('body').css('position', 'static');
+        $('body').animate({scrollTop: scrollTo}, 0);
+    };
+
+    // Avoid break on small devices
+    var instagramScrollMaxHeight = function() {
         if ($('.instagram-scrollbox').length) {
             maxHeight = $(window).height()-100;
             $('.instagram-scrollbox').css('max-height',maxHeight+'px');
         }
     }
-
     $(window).resize(function() { // set event on resize
         clearTimeout(this.id);
         this.id = setTimeout(instagramScrollMaxHeight, 100);
@@ -109,8 +105,7 @@ jQuery(function($) {
         evt = evt || window.event;
         if (evt.keyCode == 27) {
             removeModal();
-
         }
-};
+    };
 
 });
